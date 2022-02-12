@@ -3,7 +3,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
 
 <style>
-  *, *:before, *:after {
+ *, *:before, *:after {
 -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
 
@@ -11,7 +11,7 @@ body {
  overflow: hidden;
  font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
  font-weight: 100;
- color: rgba(255, 255, 255, 1);
+ color: #E9DCC9;
  margin: 0;
  padding: 0;
  background: #4A4A4A;
@@ -27,16 +27,15 @@ body {
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
-  width: 420px;
+  width: 280px;
   margin: 0 auto;
-  height: 570px;
   overflow: hidden;
 }
 
 .header {
   height: 50px;
-  width: 420px;
-  background: rgba(66, 66, 66, 1);
+  width: 280px;
+  background: #1b2f2b;
   text-align: center;
   position:relative;
   z-index: 100;
@@ -63,13 +62,13 @@ body {
 
 .left {
   border-width: 7.5px 10px 7.5px 0;
-  border-color: transparent rgba(160, 159, 160, 1) transparent transparent;
+  border-color: transparent #E9DCC9 transparent transparent;
   left: 20px;
 }
 
 .right {
   border-width: 7.5px 0 7.5px 10px;
-  border-color: transparent transparent transparent rgba(160, 159, 160, 1);
+  border-color: transparent transparent transparent #E9DCC9;
   right: 20px;
 }
 
@@ -112,103 +111,40 @@ body {
 }
 
 .week {
- background: #4A4A4A;
+ background: #375f56;
 }
 
 .day {
   display: inline-block;
-  width: 60px;
-  padding: 10px;
+  width: 40px;
+  padding: 5px;
   text-align: center;
   vertical-align: top;
-  cursor: pointer;
-  background: #4A4A4A;
+  background: #375f56;
   position: relative;
   z-index: 100;
 }
 
 .day.other {
- color: rgba(255, 255, 255, .3);
+ color: rgba(233, 220, 201, .5);
 }
 
 .day.today {
-  color: rgba(156, 202, 235, 1);
+  color: #101c19;
 }
 
 .day-name {
   font-size: 9px;
   text-transform: uppercase;
-  margin-bottom: 5px;
-  color: rgba(255, 255, 255, .5);
-  letter-spacing: .7px;
+  margin-bottom: 2px;
+  color: rgba(233, 220, 201, .5);
+  letter-spacing: 1px;
 }
 
 .day-number {
-  font-size: 24px;
-  letter-spacing: 1.5px;
+  font-size: 20px;
+  letter-spacing: 1px;
 }
-
-
-.day {
-  list-style: none;
-  margin-top: 3px;
-  text-align: center;
-  height: 12px;
-  line-height: 6px;
-  overflow: hidden;
-}
-
-.day span {
-  vertical-align: top;
-  display: inline-block;
-  padding: 0;
-  margin: 0;
-  width: 5px;
-  height: 5px;
-  line-height: 5px;
-  margin: 0 1px;
-}
-
-.blue { background: rgba(156, 202, 235, 1); }
-.orange { background: rgba(247, 167, 0, 1); }
-.green { background: rgba(153, 198, 109, 1); }
-.yellow { background: rgba(249, 233, 0, 1); }
-
-.arrow {
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  margin-left: -2px;
-  width: 0px;
-  height: 0px;
-  border-style: solid;
-  border-width: 0 5px 5px 5px;
-  border-color: transparent transparent rgba(164, 164, 164, 1) transparent;
-  transition: all 0.7s ease;
-}
-
-.entry {
-  position: relative;
-  padding: 0 0 0 25px;
-  font-size: 13px;
-  display: inline-block;
-  line-height: 30px;
-  background: transparent;
-}
-
-.entry:after {
-  position: absolute;
-  content: '';
-  height: 5px;
-  width: 5px;
-  top: 12px;
-  left: 14px;
-}
-
-.entry.blue:after { background: rgba(156, 202, 235, 1); }
-.entry.orange:after { background: rgba(247, 167, 0, 1); }
-.entry.green:after { background: rgba(153, 198, 109, 1); }
-.entry.yellow:after { background: rgba(249, 233, 0, 1); }
 
 /* Animations are cool!  */
 @-webkit-keyframes moveFromTopFade {
@@ -271,35 +207,6 @@ body {
   from { opacity: 0; -webkit-transform: translateY(-30%); }
 }
 
-@-webkit-keyframes fadeIn  {
-  from { opacity: 0; }
-}
-@-moz-keyframes fadeIn  {
-  from { opacity: 0; }
-}
-@keyframes fadeIn  {
-  from { opacity: 0; }
-}
-
-@-webkit-keyframes fadeOut  {
-  to { opacity: 0; }
-}
-@-moz-keyframes fadeOut  {
-  to { opacity: 0; }
-}
-@keyframes fadeOut  {
-  to { opacity: 0; }
-}
-
-@-webkit-keyframes fadeOutShink  {
-  to { opacity: 0; padding: 0px; height: 0px; }
-}
-@-moz-keyframes fadeOutShink  {
-  to { opacity: 0; padding: 0px; height: 0px; }
-}
-@keyframes fadeOutShink  {
-  to { opacity: 0; padding: 0px; height: 0px; }
-}
 </style>
 
 
@@ -313,9 +220,6 @@ body {
     this.current = moment().date(1);
     this.draw();
     var current = document.querySelector('.today');
-    if(current) {
-      var self = this;
-    }
   }
 
   Calendar.prototype.draw = function() {
@@ -353,7 +257,7 @@ body {
 
   Calendar.prototype.drawMonth = function() {
     var self = this;
-    
+  
     if(this.month) {
       this.oldMonth = this.month;
       this.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
@@ -421,6 +325,9 @@ body {
   Calendar.prototype.drawDay = function(day) {
     var self = this;
     this.getWeek(day);
+
+    //Outer Day
+    var outer = createElement('div', this.getDayClass(day));
 
     //Day Name
     var name = createElement('div', 'day-name', day.format('ddd'));
