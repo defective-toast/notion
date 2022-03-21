@@ -1,0 +1,65 @@
+<html>
+  <progress id="year" max="100" value="0"></progress>
+  <label for="year" id="year-label">Year: </label>
+
+  <progress id="month" max="100" value="0"></progress>
+  <label for="month" id="month-label">Month: </label>
+
+  <progress id="day" max="100" value="0"></progress>
+  <label for="day" id="day-label">Day: </label>
+
+  <script>
+  // Get the date and set variables
+  date = new Date();
+  year = date.getYear();
+  month = date.getMonth() + 1;
+  day = date.getDate();
+  hour = date.getHours() + 1;
+
+  // Set the percent of the year that is completed
+  percentOfYearPassed = parseInt((month / 12) * 100);
+  document.getElementById("year").value = percentOfYearPassed;
+  document.getElementById("year-label").innerHTML = "Year: " + percentOfYearPassed + "%";
+  // Set the percent of the month that is completed
+  percentOfMonthPassed = parseInt((day / new Date(year, month, 0).getDate()) * 100);
+  document.getElementById("month").value = percentOfMonthPassed;
+  document.getElementById("month-label").innerHTML = "Month: " + percentOfMonthPassed + "%";
+  // Set the percent of the day that is completed
+  percentOfDayPassed = parseInt((hour / 24) * 100);
+  document.getElementById("day").value = percentOfDayPassed;
+  document.getElementById("day-label").innerHTML = "Day: " + percentOfDayPassed + "%";
+  </script>
+  
+  <style>
+    label {
+      font-family: helvetica;
+      padding-right: 10px;
+      font-size: 1rem;
+      color: #375f56;
+    }
+    
+    progress {
+      height: 30px;
+      padding-top: 7px;
+    }
+
+    progress {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    
+    progress::-webkit-progress-bar {
+      background-color: rgba(233, 220, 201, .5);
+      border-radius: 7px;
+      height: 30px;
+      border: 3px solid #375f56;
+      padding: 5px;
+    }
+
+    progress::-webkit-progress-value {
+      background: #375f56;
+      border-radius: 3px;
+    }
+  </style>
+
+</html>
